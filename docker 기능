@@ -1,0 +1,211 @@
+docker 기능소개
+
+5.1
+컨테이너 실행 (run)
+5.2
+컨테이너 목록 확인하기 (ps)
+5.3
+컨테이너 중지하기 (stop)
+5.4
+컨테이너 제거하기 (rm)
+5.5
+이미지 목록 확인하기 (images)
+5.6
+이미지 다운로드하기 (pull)
+5.7
+이미지 삭제하기 (rmi)
+5.8
+컨테이너 로그 보기 (logs)
+5.9
+컨테이너에서 명령어 실행 (exec)
+
+
+
+-1.  Docker 컨테이너 생성하는 명령어
+docker run <옵션 > 이미지 이름 , ID> 명령 > 매개 변수
+
+-a, attach=[]  ->  표준 입력 (stdin), 표준 출력 stdout ), 표준 에러 ( 연결
+
+--add host=[]  ->  컨테이너의 etc /hosts 에 호스트 이름과 IP 주소 추가
+
+-c, cpu shares=0  ->  CPU 자원 분배 설정 , 설정의 기본 값은 1024
+
+--cap add=[]  ->   cgroups 의 특정 Capability 사용
+
+--cap drop=[]  ->  컨테이너에서cgroups 의 특정 Capability 제외
+
+--cidfile  ->  멀티코어CPU 에서 실행될 코어 설정
+
+-d, detach=false  ->  Detached모드
+
+--device=[]  ->  호스트의장치 사용할 수 있도록 연결
+
+--dns  ->  DNS 서버 설정
+
+--dns search=[]  ->  DNS검색 도메인 설정
+
+-e, env  ->  환경변수 설정
+
+--entrypoint  ->  Dockerfile의 ENTRYPOINT 무시하고 다른 값 설정
+
+--env file=[]  ->  환경변수가 설정된 파일 적용
+
+--expose=[]  ->  포트호스트와 연결
+
+-h, hostname=””  ->  호스트이름 설정
+
+-i , interactive=false  ->  표준입력 stdin 활성화 컨테이너 표준 입력 유지
+
+--link=[]  ->  컨테이너간연결
+
+--lxc conf  ->  LXC옵션
+
+-m, memory=””  ->  메모리한계 설정
+
+--name=””  ->  컨테이너이름 설정
+
+--net=””  ->  네트워크모드 설정
+
+-P, publish all=false  ->  호스트에 연결된 컨테이너 포트 외부노출
+
+-p, publish=[]  ->  호스트에 연결된 컨테이너 특정 포트 외부노출
+
+--privileged=false  ->  컨테이너에서 호스트의 리눅스 커널 기능 사용
+
+--restart=””  ->  컨테이너 프로세스 종료 시 재시작 정책 설정
+
+--rm =false  ->  프로세스 종료되면 컨테이너 자동삭제
+
+--security opt=[]  ->  SELinux, AppArmor 옵션 설정
+
+--sig proxy=true  ->  모든 시그널 프로세스에 전달
+
+-t, tty =false  ->  TTY모드 (pseudo TTY) 사용
+
+-u, user=””  ->  리눅스 사용자 계정 이름 /UID 설정
+
+-v, volume=[]  ->  데이터 볼륨 설정
+
+--volumes from=[]  ->  데이터 볼륨 컨테이너 연결
+
+-w, workdir  ->  프로세스가 실행될 디렉터리 설정
+
+
+
+2. 컨테이너 목록 확인하는 명령어
+docker ps < 옵션 >
+
+a,--all=false  ->  모든 컨테이너 출력
+
+--before=””  ->  특정 컨테이너가 생성되기 전에 생성된 컨테이너 출력 , 정지된 컨테이너도 포함
+
+-f, --filter=[]  ->  출력 필터 설정 예 ) “exited=0"
+
+-l, --latest=false  ->  마지막에 생성된 컨테이너 출력 정지된 컨테이너도 포함
+
+-n=-1  ->  최근에 생성된 컨테이너 일정 개수만 출력 정지된 컨테이너도 포함
+
+--no-trunc=false  ->  생략된 부분 모두 출력
+
+-q,--quiet=false  ->   컨테이너 ID 출력
+
+
+
+3.  실행중인 컨테이너 중지하는 명령어
+docker stop <옵션 > [ CONTAINER...]
+
+-t,-time=10  ->  컨테이너 정지하기 전 대기하는 시간 설정 초 단위
+
+
+
+4.  컨테이너 제거하는 명령어
+docker rm <옵션 > <컨테이너 이름 ,ID>
+
+-f,--force=false  ->  컨테이너 강제로 정지한 뒤 삭제 (SIGKILL 시그널 사용
+
+-l,--link=false  ->  docker run 명령의 link 옵션 사용하여 연결된 링크만 삭제
+
+-v,--volumes=false  ->  컨테이너에 연결된 데이터 볼륨 삭제
+
+
+5.  도커 이미지 목록 출력하는 명령어
+docker images <옵션 > <이미지 이름>
+
+-a,--all=false  ->  상속 이미지까지 모두 표시
+
+-f,--filter=[]  ->  출력 결과 필터 설정 (“dangling= 이름이 없는 이미지만 출력
+
+--no-trunc=false  ->  생략된 부분 모두 출력
+
+-q,--quiet=false  ->  이미지 ID 만 출력
+
+
+6.  Docker 레지스트리에서 이미지 받아오는 명령어
+docker pull <옵션 > <저장소 이름>/ <이미지 이름>:< 태그>
+
+-a,--all=false  ->  이미지의 모든 태그 받음
+
+
+7.  이미지 삭제하는 명령어 , 만약 태그 지정하지 않으면 latest 태그 삭제
+docker rmi <저장소 이름> /<이미지 이름 ,ID >:< 태그>
+
+-f,--force=false  ->  이미지 강제로 삭제
+
+--no prune=false  ->  태그가 없는 상속 이미지 삭제하지 않음
+
+
+8.  컨테이너의 로그 출력하는 명령어
+docker logs <컨테이너 이름 , ID>
+
+
+-f,--follow=false  ->  로그 실시간 출력
+
+-t,--timestamps=false  ->  로그 앞에 시간 값 표시
+
+--tail=”all”  ->  숫자 지정하여 최종 로그에서 일정 개수만 출력
+
+
+9.  외부에서 컨테이너 안의 명령 실행하는 명령어
+docker exec < 옵션 > 컨테이너 이름 , ID> 명령 > <매개 변수>
+
+-d,--detach=false  ->  명령 백그라운드로 실행
+
+-i ,--interactive=false  ->  표준 입력 ( 활성화하며 컨테이너와 연결 (attach) 되어 있지 않더라도 표준 입력 유지
+
+-t,--tty =false  ->  TTY모드 (pseudo-TTY) 사용 (Bash 사용시 필요 명령 입력은 가능하지만 쉘이 표시되지 않음
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
