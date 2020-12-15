@@ -1,0 +1,7 @@
+6.1 Nginx docker container 서비스
+
+Docker 이용하여 Nginx 웹서버 구축 docker run-d-p 80:80-read-only-v $(pwd)/nginx-cache:/var/cache/nginx-v $(pwd)/nginx-pid:/var/run nginx
+
+Nginx 컨테이너가 호스트 포트 80 으로 서비스되고 있는 것 볼 수 있음
+
+웹브라우저에서 Nginx 서비스 호출
