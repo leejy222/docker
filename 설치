@@ -1,0 +1,60 @@
+docker 사용법
+
+설치 진행 (CentOS 설치)
+
+yum 사용하여 패키지 설치
+-$ sudo yum install y yum utils 장치 매퍼 영구 데이터 lvm2
+
+• 레포지토리 추가
+-$ sudo yum 구성 관리자
+저장소 추가 https://download.docker.com/linux/centos/docker ce.repo
+
+• Docker ce 설치
+-$ sudo yum 도커 ce 설치
+
+• Docker 버전 확인
+-$ 도커 버전
+
+설치 진행 (Ubuntu 설치)
+
+• 레포지토리 이용한 설치 방법
+-$ apt get update 좀로 apt 패키지 업데이트
+
+• Apt 통해 패키지 설치
+-$ sudo apt get install apt transport https ca 인증서 curl 소프트웨어 속성 공통
+
+• Docker 공식 GPG 키 추가
+-$ curl fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt 키 추가
+
+• 아파트 지문 키 획득 확인
+-$ sudo apt 키 지문 0EBFCD88
+
+• 레포지토리 추가
+-$ sudo add apt repository "deb [arch = amd64] https://download.docker.com/linux/ubuntu $ (lsb_release cs) stable"
+
+• Docker ce 설치
+-$ sudo apt get install docker ce
+
+• Docker 버전 확인
+-$ 도커 버전
+
+
+설치 진행 (Windows 설치)
+
+• Docker 스토어 접속하여 설치 패키지 다운로드 https://store.docker.com/editions/community/dockerce 데스크톱 창
+
+• Windows Installer.exe 용 Docker 실행하여 설치 진행
+
+• 설치가 작성 종료 및 로그 아웃 클릭하여 Windows 로그 아웃 진행
+
+• Windows 검색에서 Docker 찾아 실행 Windows HyperV를 사용하고 있지 않았다면 Ok 버튼 클릭
+
+-$ 도커 버전확인
+-
+-$ docker version
+
+
+
+
+
+
